@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ananya ❤️ Yash</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:radial-gradient(circle at top,#1b0033,#000);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.container{
+max-width:600px;
+z-index:2;
+}
+
+h1{
+font-size:50px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px pink;}
+to{ text-shadow:0 0 30px red;}
+}
+
+#letter{
+font-size:20px;
+margin-top:20px;
+min-height:120px;
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+#yes{
+background:#ff4e8a;
+color:white;
+}
+
+#no{
+background:white;
+color:black;
+position:absolute;
+}
+
+.petal{
+position:absolute;
+color:#ff4e8a;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-10vh);
+}
+to{
+transform:translateY(100vh);
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Ananya ❤️ Yash</h1>
+
+<div id="letter"></div>
+
+<div id="buttons" style="display:none;">
+<h2>Do you love me? ❤️</h2>
+<button id="yes">YES 💖</button>
+<button id="no">NO 😜</button>
+</div>
+
+</div>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
+
+<script>
+
+const text=`My Dearest Ananya,
+
+In a world full of millions of people,
+my heart somehow found you.
+
+You are the smile that brightens my darkest days,
+the calm in my chaos,
+and the most beautiful part of my life.
+
+Loving you is the easiest thing
+my heart has ever done.
+
+No matter what happens,
+I promise one thing —
+I will always choose you.
+
+Forever yours,
+Yash ❤️`;
+
+let i=0;
+
+function type(){
+if(i<text.length){
+document.getElementById("letter").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,40);
+}else{
+document.getElementById("buttons").style.display="block";
+}
+}
+
+type();
+
+
+// falling petals
+setInterval(()=>{
+const petal=document.createElement("div");
+petal.classList.add("petal");
+petal.innerHTML="🌹";
+petal.style.left=Math.random()*100+"vw";
+petal.style.fontSize=(Math.random()*20+15)+"px";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},6000);
+
+},300);
+
+
+// NO button escape
+const no=document.getElementById("no");
+
+no.addEventListener("mouseover",()=>{
+
+const x=Math.random()*window.innerWidth;
+const y=Math.random()*window.innerHeight;
+
+no.style.left=x+"px";
+no.style.top=y+"px";
+
+});
+
+
+// YES explosion
+document.getElementById("yes").onclick=function(){
+
+document.body.innerHTML=
+"<h1 style='font-size:60px;'>❤️ I LOVE YOU ANANYA ❤️</h1>";
+
+for(let i=0;i<200;i++){
+
+const heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.style.position="absolute";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top=Math.random()*100+"vh";
+heart.style.fontSize="30px";
+
+document.body.appendChild(heart);
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
